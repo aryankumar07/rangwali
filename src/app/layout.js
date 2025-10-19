@@ -25,15 +25,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{
+          minHeight: "100dvh", // Use dynamic viewport height for mobile compatibility
+          margin: 0, // Remove default margins
+          position: "relative", // Ensure body is positioned for absolute children
+        }}
       >
-        <div className="min-h-screen w-full relative">
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              background:
-                "radial-gradient(125% 125% at 50% 100%, #000000 40%, #350136 100%)",
-            }}
-          />
+        <div
+          className="min-h-[100dvh] w-full relative" // Use dynamic viewport height
+          style={{
+            background:
+              "radial-gradient(125% 125% at 50% 100%, #000000 40%, #350136 100%)",
+            backgroundSize: "cover", // Ensure background covers the entire area
+            backgroundAttachment: "fixed", // Prevent scrolling issues on mobile
+            backgroundPosition: "center", // Center the gradient
+          }}
+        >
           {children}
         </div>
       </body>

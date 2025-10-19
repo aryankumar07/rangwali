@@ -12,6 +12,7 @@ import {
 } from '../store';
 import { CanvasArea } from "./canvas-area";
 
+// Import Google Fonts for Diwali-inspired typography
 const Card = () => {
   const cardRef = useRef(null);
   const [downloading, setDownloading] = useState(false);
@@ -31,7 +32,6 @@ const Card = () => {
     setDownloading(true);
 
     try {
-      // Dynamically import dom-to-image
       const domtoimage = await import('dom-to-image');
 
       const blob = await domtoimage.toBlob(cardRef.current, {
@@ -63,7 +63,6 @@ const Card = () => {
     if (!cardRef.current) return;
 
     try {
-      // Dynamically import dom-to-image
       const domtoimage = await import('dom-to-image');
 
       const blob = await domtoimage.toBlob(cardRef.current, {
@@ -96,13 +95,23 @@ const Card = () => {
   };
 
   return (
-    <div className="flex gap-4 items-start rounded-xl">
+    <div className="flex gap-4 items-start rounded-xl font-sans">
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Devanagari+Sangam+MN&display=swap');
+        .diwali-title {
+          font-family: 'Satisfy', cursive;
+        }
+        .diwali-text {
+          font-family: 'Devanagari Sangam MN', sans-serif;
+        }
+      `}</style>
+
       {/* Action Buttons - Left Side */}
       <div className="flex flex-col gap-3">
         <button
           onClick={copyToClipboard}
           title="Copy to clipboard"
-          className="p-3 rounded-xl shadow-lg transition-all bg-gradient-to-r from-blue-500 to-cyan-600 text-white hover:from-blue-600 hover:to-cyan-700 hover:scale-110"
+          className="p-3 rounded-full shadow-lg transition-all bg-gradient-to-r from-amber-500 to-orange-600 text-white hover:from-amber-600 hover:to-orange-700 hover:scale-110"
         >
           {copied ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +128,7 @@ const Card = () => {
           onClick={downloadCard}
           disabled={downloading}
           title="Download card"
-          className="p-3 rounded-xl shadow-lg transition-all bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 hover:scale-110 disabled:opacity-50 disabled:hover:scale-100"
+          className="p-3 rounded-full shadow-lg transition-all bg-gradient-to-r from-red-500 to-pink-600 text-white hover:from-red-600 hover:to-pink-700 hover:scale-110 disabled:opacity-50 disabled:hover:scale-100"
         >
           {downloading ? (
             <svg className="animate-spin w-6 h-6" fill="none" viewBox="0 0 24 24">
@@ -135,51 +144,48 @@ const Card = () => {
       </div>
 
       {/* Card */}
-      <div ref={cardRef} className="min-w-[380px] w-[380px] rounded-3xl shadow-2xl overflow-hidden border-4 border-amber-400/50 bg-transparent">
-        <div
-          className="p-0 relative"
-          style={{ backgroundColor: bgColor }}
-        >
+      <div ref={cardRef} className="min-w-[380px] w-[380px] rounded-3xl shadow-2xl overflow-hidden border-8 border-double border-amber-500/70 bg-gradient-to-br from-yellow-100 via-orange-100 to-red-100">
+        <div className="p-0 relative" style={{ backgroundColor: bgColor }}>
           {/* Decorative Header */}
-          <div className="relative pt-6 pb-4">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <span className="text-3xl animate-pulse">🪔</span>
-              <h1 className="font-bold text-3xl text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
+          <div className="relative pt-8 pb-6 bg-gradient-to-b from-orange-500/20 to-transparent">
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <span className="text-4xl animate-pulse">🪔</span>
+              <h1 className="diwali-title font-bold text-4xl text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-red-700">
                 Happy Diwali
               </h1>
-              <span className="text-3xl animate-pulse">🪔</span>
+              <span className="text-4xl animate-pulse">🪔</span>
             </div>
 
-            {/* Decorative border */}
-            <div className="flex items-center justify-center gap-2 px-6">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
-              <span className="text-xl">✨</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
+            {/* Decorative border with mandala-like pattern */}
+            <div className="flex items-center justify-center gap-3 px-8">
+              <div className="flex-1 h-1 bg-gradient-to-r from-transparent via-amber-700 to-transparent" />
+              <span className="text-2xl animate-spin-slow">✨</span>
+              <div className="flex-1 h-1 bg-gradient-to-r from-transparent via-amber-700 to-transparent" />
             </div>
           </div>
 
           {/* Recipient Name */}
-          <div className="px-6 mb-4">
+          <div className="px-8 mb-6">
             <p
-              className="text-xl font-semibold text-center"
+              className="diwali-text text-2xl font-semibold text-center tracking-wide"
               style={{ color: recipientColor }}
             >
-              {recipientName}
+              Dear {recipientName}
             </p>
           </div>
 
           {/* Rangoli Design */}
-          <div className="px-6 pb-4">
-            <div className="rounded-2xl overflow-hidden border-4 border-white/50 shadow-lg">
+          <div className="px-8 pb-6">
+            <div className="rounded-3xl overflow-hidden border-4 border-amber-300/50 shadow-xl bg-white/30">
               <CanvasArea width={320} height={220} />
             </div>
           </div>
 
           {/* Greeting Message */}
-          <div className="px-6 pb-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-inner border border-amber-200">
+          <div className="px-8 pb-8">
+            <div className="bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-inner border-2 border-amber-300/50">
               <p
-                className="text-sm text-center leading-relaxed italic"
+                className="diwali-text text-base text-center leading-relaxed tracking-wide"
                 style={{ color: messageColor }}
               >
                 "{message}"
@@ -188,18 +194,23 @@ const Card = () => {
           </div>
 
           {/* Sender Signature */}
-          <div className="px-6 pb-6">
-            <div className="border-t-2 border-dotted border-amber-600/30 pt-4">
-              <p className="text-sm text-gray-600 text-right italic">
-                Warm wishes,
+          <div className="px-8 pb-8">
+            <div className="border-t-4 border-dashed border-amber-600/40 pt-6">
+              <p className="diwali-text text-base text-amber-900 text-right tracking-wide">
+                Warmest Diwali Wishes,
               </p>
               <p
-                className="text-lg font-bold text-right mt-1"
+                className="diwali-text text-xl font-semibold text-right mt-2"
                 style={{ color: senderColor }}
               >
                 {senderName}
               </p>
             </div>
+          </div>
+
+          {/* Decorative Footer */}
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-amber-400/20 to-transparent flex justify-center items-end pb-2">
+            <span className="text-2xl animate-pulse">🪔</span>
           </div>
         </div>
       </div>
