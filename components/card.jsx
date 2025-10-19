@@ -95,7 +95,7 @@ const Card = () => {
   };
 
   return (
-    <div className="flex gap-4 items-start rounded-xl font-sans">
+    <div className="flex flex-col md:flex-row gap-4 items-start rounded-xl font-sans">
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Satisfy&family=Devanagari+Sangam+MN&display=swap');
         .diwali-title {
@@ -107,7 +107,7 @@ const Card = () => {
       `}</style>
 
       {/* Action Buttons - Left Side */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-row md:flex-col gap-3">
         <button
           onClick={copyToClipboard}
           title="Copy to clipboard"

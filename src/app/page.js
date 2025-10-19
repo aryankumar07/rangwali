@@ -22,7 +22,7 @@ export default function Home() {
         <MobileSettings open={openSettings} onClose={() => setOpenSettings(false)} />
         <button
           onClick={() => setOpenSettings(true)}
-          className="sm:hidden fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg bg-white/95 backdrop-blur text-black"
+          className="lg:hidden fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg bg-white/95 backdrop-blur text-black"
           aria-label="Open settings"
         >
           ⚙️

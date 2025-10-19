@@ -172,53 +172,6 @@ const MobileSettings = ({ open, onClose }) => {
 
           <hr className="border-white/6" />
 
-          {/* Drawing / Canvas Settings */}
-          <div className="space-y-2">
-            <h3 className="font-semibold">Drawing</h3>
-
-            <label className="block">
-              Brush size: <span className="ml-2 font-medium">{brush}</span>
-            </label>
-            <input
-              type="range"
-              min="1"
-              max="32"
-              value={brush}
-              onChange={(e) => setBrush(Number(e.target.value))}
-              className="w-full"
-            />
-
-            <label className="block mt-2">Background</label>
-            <select
-              value={bgMode}
-              onChange={(e) => setBgMode(e.target.value)}
-              className="w-full text-sm p-2 rounded border bg-black/10"
-            >
-              <option value="paper">Paper</option>
-              <option value="gold">Gold</option>
-              <option value="white">White</option>
-            </select>
-
-            <div className="grid grid-cols-2 gap-2 mt-2">
-              <input
-                type="number"
-                min="100"
-                max="1200"
-                value={width}
-                onChange={(e) => setWidth(Number(e.target.value))}
-                className="p-2 rounded border bg-black/10"
-              />
-              <input
-                type="number"
-                min="100"
-                max="1200"
-                value={height}
-                onChange={(e) => setHeight(Number(e.target.value))}
-                className="p-2 rounded border bg-black/10"
-              />
-            </div>
-          </div>
-
           <hr className="border-white/6" />
 
           {/* Rangoli Design */}

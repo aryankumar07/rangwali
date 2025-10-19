@@ -64,7 +64,7 @@ const SettingsPanel = ({ className = "" }) => {
   return (
     <div
       className={
-        'hidden sm:block fixed right-4 top-6 z-50 w-72 max-h-[90vh] overflow-y-auto p-5 rounded-2xl shadow-2xl backdrop-blur-xl border border-purple-500/30 ' +
+        'hidden lg:block fixed right-4 top-6 z-50 w-72 max-h-[90vh] overflow-y-auto p-5 rounded-2xl shadow-2xl backdrop-blur-xl border border-purple-500/30 ' +
         className
       }
       style={{
