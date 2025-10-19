@@ -84,6 +84,82 @@ const SettingsPanel = ({ className = "" }) => {
       </div>
 
       <div className="mt-3 text-xs space-y-4">
+
+        <div className="space-y-3">
+          <h3 className="font-bold text-sm text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+            Rangoli Design
+          </h3>
+
+          <div>
+            <label className="block mb-1.5 text-purple-200">Color Scheme</label>
+            <select
+              value={scheme}
+              onChange={(e) => setScheme(e.target.value)}
+              className="w-full text-sm p-2.5 rounded-lg border border-purple-500/30 bg-black/30 text-white focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+            >
+              {colorSchemes.map((s) => (
+                <option key={s} value={s} className="bg-gray-900">
+                  {s.charAt(0).toUpperCase() + s.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1.5 text-purple-200">Pattern</label>
+            <select
+              value={pattern}
+              onChange={(e) => setPattern(e.target.value)}
+              className="w-full text-sm p-2.5 rounded-lg border border-purple-500/30 bg-black/30 text-white focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+            >
+              {patterns.map((p) => (
+                <option key={p} value={p} className="bg-gray-900">
+                  {p.charAt(0).toUpperCase() + p.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block mb-1.5 text-purple-200">Petals: {petals}</label>
+              <input
+                type="range"
+                min="3"
+                max="64"
+                value={petals}
+                onChange={(e) => setPetals(Number(e.target.value))}
+                className="w-full accent-purple-500"
+              />
+            </div>
+            <div>
+              <label className="block mb-1.5 text-purple-200">Layers: {layers}</label>
+              <input
+                type="range"
+                min="1"
+                max="12"
+                value={layers}
+                onChange={(e) => setLayers(Number(e.target.value))}
+                className="w-full accent-purple-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block mb-1.5 text-purple-200">Rotation: {rotation}°</label>
+            <input
+              type="range"
+              min="-360"
+              max="360"
+              value={rotation}
+              onChange={(e) => setRotation(Number(e.target.value))}
+              className="w-full accent-purple-500"
+            />
+          </div>
+        </div>
+
+
+
         {/* Card Background Color */}
         <div>
           <label className="block font-semibold mb-2 text-purple-200">Card Background Color</label>
@@ -170,78 +246,6 @@ const SettingsPanel = ({ className = "" }) => {
         <hr className="border-purple-500/30" />
 
         {/* Rangoli Design Settings */}
-        <div className="space-y-3">
-          <h3 className="font-bold text-sm text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-            Rangoli Design
-          </h3>
-
-          <div>
-            <label className="block mb-1.5 text-purple-200">Color Scheme</label>
-            <select
-              value={scheme}
-              onChange={(e) => setScheme(e.target.value)}
-              className="w-full text-sm p-2.5 rounded-lg border border-purple-500/30 bg-black/30 text-white focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
-            >
-              {colorSchemes.map((s) => (
-                <option key={s} value={s} className="bg-gray-900">
-                  {s.charAt(0).toUpperCase() + s.slice(1)}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block mb-1.5 text-purple-200">Pattern</label>
-            <select
-              value={pattern}
-              onChange={(e) => setPattern(e.target.value)}
-              className="w-full text-sm p-2.5 rounded-lg border border-purple-500/30 bg-black/30 text-white focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
-            >
-              {patterns.map((p) => (
-                <option key={p} value={p} className="bg-gray-900">
-                  {p.charAt(0).toUpperCase() + p.slice(1)}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block mb-1.5 text-purple-200">Petals: {petals}</label>
-              <input
-                type="range"
-                min="3"
-                max="64"
-                value={petals}
-                onChange={(e) => setPetals(Number(e.target.value))}
-                className="w-full accent-purple-500"
-              />
-            </div>
-            <div>
-              <label className="block mb-1.5 text-purple-200">Layers: {layers}</label>
-              <input
-                type="range"
-                min="1"
-                max="12"
-                value={layers}
-                onChange={(e) => setLayers(Number(e.target.value))}
-                className="w-full accent-purple-500"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block mb-1.5 text-purple-200">Rotation: {rotation}°</label>
-            <input
-              type="range"
-              min="-360"
-              max="360"
-              value={rotation}
-              onChange={(e) => setRotation(Number(e.target.value))}
-              className="w-full accent-purple-500"
-            />
-          </div>
-        </div>
       </div>
     </div>
   );
